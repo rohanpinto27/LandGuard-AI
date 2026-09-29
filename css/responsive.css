@@ -1,0 +1,67 @@
+/* ==========================================================================
+   LANDGUARD AI - Responsive Breakpoints
+   Tablet, Mobile, and Display Adaptations
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 220px;
+  }
+  
+  .page-body {
+    padding: 20px;
+  }
+  
+  .dashboard-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .dashboard-grid-main {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+  
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.mobile-open {
+    transform: translateX(0);
+    width: 260px;
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .topbar {
+    padding: 0 16px;
+  }
+  
+  .search-container {
+    width: 180px;
+  }
+  
+  .search-input:focus {
+    width: 200px;
+  }
+  
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+  
+  .timeline-stepper {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .timeline-stepper::before {
+    display: none;
+  }
+}

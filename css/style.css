@@ -1,0 +1,203 @@
+/* ==========================================================================
+   LANDGUARD AI - Main Stylesheet
+   Predictive Land Acquisition Risk Analytics | Dakshina Kannada District
+   ========================================================================== */
+
+:root {
+  /* Branding & Palette */
+  --navy-dark: #071426;
+  --navy-primary: #0B1F3A;
+  --navy-light: #162E50;
+  --blue-primary: #1769E0;
+  --blue-hover: #1256BC;
+  --blue-soft: #EFF6FF;
+  --teal-primary: #0EA5A8;
+  --teal-soft: #F0FDFA;
+  
+  /* Neutral Palette */
+  --bg-main: #F5F7FA;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F8FAFC;
+  --border-color: #E2E8F0;
+  --border-hover: #CBD5E1;
+  
+  /* Typography Colors */
+  --text-primary: #172033;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+  --text-inverse: #FFFFFF;
+  
+  /* Status & Risk Colors */
+  --risk-high: #DC2626;
+  --risk-high-bg: #FEF2F2;
+  --risk-high-border: #FCA5A5;
+  
+  --risk-med: #D97706;
+  --risk-med-bg: #FFFBEB;
+  --risk-med-border: #FDE68A;
+  
+  --risk-low: #16A34A;
+  --risk-low-bg: #F0FDF4;
+  --risk-low-border: #86EFAC;
+  
+  --info-blue: #0284C7;
+  --info-bg: #F0F9FF;
+  
+  /* Geometry & Shadows */
+  --sidebar-width: 260px;
+  --topbar-height: 70px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 1px 3px rgba(11, 31, 58, 0.05);
+  --shadow-md: 0 4px 12px rgba(11, 31, 58, 0.08);
+  --shadow-lg: 0 10px 25px rgba(11, 31, 58, 0.12);
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Global */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--blue-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--blue-hover);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+/* Layout System */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: margin-left 0.3s ease;
+}
+
+.page-body {
+  padding: 24px 32px 40px 32px;
+  flex: 1;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Typography Hierarchy */
+h1, .h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy-primary);
+  letter-spacing: -0.02em;
+}
+
+h2, .h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy-primary);
+  letter-spacing: -0.01em;
+}
+
+h3, .h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+h4, .h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Utility Classes */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.gap-6 { gap: 24px; }
+.mt-4 { margin-top: 16px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+
+/* Disclaimer Banner / Footer */
+.app-footer {
+  margin-top: auto;
+  padding: 20px 32px;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.disclaimer-tag {
+  background: var(--bg-subtle);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  font-size: 11px;
+  color: var(--text-muted);
+}

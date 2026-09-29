@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerts & Warnings - LandGuard AI | Dakshina Kannada</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Dynamic Sidebar Holder -->
+    <div id="sidebar-container"></div>
+
+    <div class="main-content">
+      <!-- Dynamic Topbar Holder -->
+      <div id="topbar-container"></div>
+
+      <main class="page-body">
+        <div class="section-header" style="margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <div class="section-title">
+            <h1 style="font-size: 24px;">Alerts & Early Warnings Hub</h1>
+            <div class="subtitle">Automated risk threshold breaches and milestone bottleneck alerts</div>
+          </div>
+
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-primary alert-filter-btn" data-severity="ALL">All Alerts</button>
+            <button class="btn btn-sm btn-outline alert-filter-btn" data-severity="CRITICAL">Critical</button>
+            <button class="btn btn-sm btn-outline alert-filter-btn" data-severity="HIGH">High</button>
+            <button class="btn btn-sm btn-outline alert-filter-btn" data-severity="MEDIUM">Medium</button>
+          </div>
+        </div>
+
+        <div id="alerts-feed-container">
+          <!-- Dynamically populated -->
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <div>
+          <strong>LANDGUARD AI</strong> • Predictive Land Acquisition Risk Analytics for Dakshina Kannada District
+        </div>
+        <div class="disclaimer-tag">
+          Prototype demonstration data. Not an official government dataset.
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/mock-data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/alerts.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LandGuard AI - Predictive Land Acquisition Analytics</title>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const session = LANDGUARD_AUTH.getSession();
+      if (session && session.loggedIn) {
+        window.location.href = 'dashboard.html';
+      } else {
+        window.location.href = 'login.html';
+      }
+    });
+  </script>
+</head>
+<body style="background: #0B1F3A; color: #FFF; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+  <div style="text-align: center;">
+    <h2>LANDGUARD AI</h2>
+    <p style="color: #94A3B8;">Redirecting to Land Acquisition Intelligence Center...</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects Repository - LandGuard AI | Dakshina Kannada</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Dynamic Sidebar Holder -->
+    <div id="sidebar-container"></div>
+
+    <div class="main-content">
+      <!-- Dynamic Topbar Holder -->
+      <div id="topbar-container"></div>
+
+      <main class="page-body">
+        <div class="section-header" style="margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <div class="section-title">
+            <h1 style="font-size: 24px;">Land Acquisition Projects</h1>
+            <div class="subtitle" id="project-count-badge">48 Projects Monitored across Dakshina Kannada</div>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <a href="ai-analysis.html" class="btn btn-primary">
+              <i class="fa-solid fa-plus"></i> Analyze New Project
+            </a>
+          </div>
+        </div>
+
+        <!-- Controls & Filter Toolbar -->
+        <div class="card" style="margin-bottom: 24px; padding: 16px;">
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; flex: 1; min-width: 300px;">
+              <!-- Search Input -->
+              <div style="position: relative; flex: 1; min-width: 220px;">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 13px;"></i>
+                <input type="text" id="projects-search" class="search-input" style="width: 100%; border-radius: var(--radius-md); padding-left: 36px;" placeholder="Search Project ID, Name or Village...">
+              </div>
+
+              <!-- Taluk Filter -->
+              <select id="filter-taluk" class="search-input" style="width: 160px; border-radius: var(--radius-md);">
+                <option value="ALL">All Taluks</option>
+                <option value="Mangaluru">Mangaluru</option>
+                <option value="Bantwal">Bantwal</option>
+                <option value="Belthangady">Belthangady</option>
+                <option value="Puttur">Puttur</option>
+                <option value="Sullia">Sullia</option>
+                <option value="Kadaba">Kadaba</option>
+                <option value="Moodbidri">Moodbidri</option>
+              </select>
+
+              <!-- Risk Filter -->
+              <select id="filter-risk" class="search-input" style="width: 150px; border-radius: var(--radius-md);">
+                <option value="ALL">All Risk Levels</option>
+                <option value="HIGH">High Risk</option>
+                <option value="MEDIUM">Medium Risk</option>
+                <option value="LOW">Low Risk</option>
+              </select>
+            </div>
+
+            <!-- View Switcher -->
+            <div style="display: flex; gap: 4px; background: var(--bg-subtle); padding: 3px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <button id="btn-view-list" class="btn btn-sm btn-primary" title="List Table View">
+                <i class="fa-solid fa-list"></i> Table
+              </button>
+              <button id="btn-view-grid" class="btn btn-sm btn-outline" title="Grid Card View" style="border: none;">
+                <i class="fa-solid fa-grip-vertical"></i> Cards
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Projects Display Container (Table or Grid) -->
+        <div id="projects-container">
+          <!-- Dynamically populated -->
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <div>
+          <strong>LANDGUARD AI</strong> • Predictive Land Acquisition Risk Analytics for Dakshina Kannada District
+        </div>
+        <div class="disclaimer-tag">
+          Prototype demonstration data. Not an official government dataset.
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/mock-data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/projects.js"></script>
+</body>
+</html>

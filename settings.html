@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - LandGuard AI | Dakshina Kannada</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Dynamic Sidebar Holder -->
+    <div id="sidebar-container"></div>
+
+    <div class="main-content">
+      <!-- Dynamic Topbar Holder -->
+      <div id="topbar-container"></div>
+
+      <main class="page-body">
+        <div class="section-header" style="margin-bottom: 24px;">
+          <div class="section-title">
+            <h1 style="font-size: 24px;">System Settings & Configuration</h1>
+            <div class="subtitle">Customize risk evaluation thresholds, notifications, and administrator preferences</div>
+          </div>
+        </div>
+
+        <form id="settings-form">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+            <!-- Left: Profile & Risk Thresholds -->
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              
+              <!-- Profile Card -->
+              <div class="card">
+                <h3 style="margin-bottom: 14px; color: var(--navy-primary);">User Profile Information</h3>
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                  <div class="user-avatar" style="width: 52px; height: 52px; font-size: 18px;">
+                    DA
+                  </div>
+                  <div>
+                    <div style="font-size: 16px; font-weight: 700; color: var(--navy-primary);">District Administrator</div>
+                    <div style="font-size: 12px; color: var(--text-secondary);">Dakshina Kannada District Collectorate</div>
+                    <div style="font-size: 11px; color: var(--blue-primary); font-weight: 600; margin-top: 2px;">admin@landguard.ai</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Risk Threshold Configuration -->
+              <div class="card">
+                <h3 style="margin-bottom: 4px; color: var(--navy-primary);">Risk Categorization Thresholds</h3>
+                <div class="subtitle" style="margin-bottom: 16px;">Set baseline cut-offs for High, Medium, and Low risk classification</div>
+
+                <div style="margin-bottom: 16px;">
+                  <label style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--risk-high); margin-bottom: 6px;">
+                    <span>HIGH RISK Bound (&ge; %)</span>
+                    <span id="thresh-high-val">70%</span>
+                  </label>
+                  <input type="range" min="50" max="90" value="70" style="width: 100%; cursor: pointer;" oninput="document.getElementById('thresh-high-val').innerText = this.value + '%'">
+                </div>
+
+                <div style="margin-bottom: 16px;">
+                  <label style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--risk-med); margin-bottom: 6px;">
+                    <span>MEDIUM RISK Bound (40% - %)</span>
+                    <span id="thresh-med-val">69%</span>
+                  </label>
+                  <input type="range" min="30" max="69" value="69" style="width: 100%; cursor: pointer;" oninput="document.getElementById('thresh-med-val').innerText = this.value + '%'">
+                </div>
+
+                <div style="font-size: 11.5px; color: var(--text-muted); background: var(--bg-subtle); padding: 10px; border-radius: 6px;">
+                  <i class="fa-solid fa-triangle-exclamation" style="color: var(--risk-med);"></i> Threshold updates dynamically adjust project categorization across Dashboard, Map, and Alerts.
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right: Notifications & Diagnostics -->
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              
+              <!-- Notification Preferences -->
+              <div class="card">
+                <h3 style="margin-bottom: 14px; color: var(--navy-primary);">Notification Preferences</h3>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 13px;">
+                    <span>High-Risk Project Early Warning Alerts</span>
+                    <input type="checkbox" checked>
+                  </label>
+                  <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 13px;">
+                    <span>Compensation Disbursal Delay Threshold Warning</span>
+                    <input type="checkbox" checked>
+                  </label>
+                  <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 13px;">
+                    <span>New Court Litigation Registration Alerts</span>
+                    <input type="checkbox" checked>
+                  </label>
+                  <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 13px;">
+                    <span>Weekly Executive Risk Digest Email</span>
+                    <input type="checkbox">
+                  </label>
+                </div>
+              </div>
+
+              <!-- System Diagnostics & Environment -->
+              <div class="card" style="background: var(--bg-subtle);">
+                <h3 style="margin-bottom: 12px; color: var(--navy-primary);">System & ML Model Diagnostics</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px;">
+                  <div><strong>AI Engine Model:</strong> Random Forest</div>
+                  <div><strong>Model Version:</strong> 2.4-DK</div>
+                  <div><strong>API Integration:</strong> Flask API Ready</div>
+                  <div><strong>GIS Provider:</strong> OpenStreetMap</div>
+                  <div><strong>Jurisdiction:</strong> Dakshina Kannada</div>
+                  <div><strong>Status:</strong> Operational</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px;">
+            <button type="button" class="btn btn-outline" onclick="window.location.reload()">Reset Defaults</button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-floppy-disk"></i> Save System Settings
+            </button>
+          </div>
+        </form>
+      </main>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <div>
+          <strong>LANDGUARD AI</strong> • Predictive Land Acquisition Risk Analytics for Dakshina Kannada District
+        </div>
+        <div class="disclaimer-tag">
+          Prototype demonstration data. Not an official government dataset.
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/mock-data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

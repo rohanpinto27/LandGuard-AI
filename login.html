@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - LandGuard AI | Dakshina Kannada District</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .login-wrapper {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+    }
+    .login-brand-panel {
+      flex: 1.1;
+      background: linear-gradient(135deg, #071426 0%, #0B1F3A 60%, #162E50 100%);
+      color: #FFFFFF;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-form-panel {
+      flex: 0.9;
+      background: #F5F7FA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .login-card {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 440px;
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-lg);
+    }
+    .demo-login-box {
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--border-color);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-wrapper">
+    <!-- Left Branding Panel -->
+    <div class="login-brand-panel">
+      <div>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 40px;">
+          <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--blue-primary), var(--teal-primary)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div>
+            <div style="font-size: 22px; font-weight: 800; letter-spacing: 0.05em;">LANDGUARD AI</div>
+            <div style="font-size: 11px; color: var(--teal-primary); font-weight: 700; text-transform: uppercase;">Dakshina Kannada District • Karnataka</div>
+          </div>
+        </div>
+
+        <h1 style="font-size: 36px; line-height: 1.25; margin-bottom: 20px; color: #FFFFFF;">
+          Predictive Land Acquisition Risk Analytics
+        </h1>
+
+        <p style="font-size: 15px; color: #94A3B8; line-height: 1.6; max-width: 520px; margin-bottom: 40px;">
+          AI-powered decision support platform for predicting project delay risks, tracking compensation progress, legal disputes, and generating proactive administrative interventions across Dakshina Kannada.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #E2E8F0;">
+            <i class="fa-solid fa-circle-check" style="color: var(--teal-primary);"></i>
+            <span>AI Risk Prediction Prototype (Random Forest Architecture)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #E2E8F0;">
+            <i class="fa-solid fa-circle-check" style="color: var(--teal-primary);"></i>
+            <span>SHAP Explainable AI (XAI) Delay Factor Attribution</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #E2E8F0;">
+            <i class="fa-solid fa-circle-check" style="color: var(--teal-primary);"></i>
+            <span>Dakshina Kannada Taluk-level Interactive GIS Map</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size: 12px; color: #64748B;">
+        Prototype Demonstration Data • Capstone Project 2026
+      </div>
+    </div>
+
+    <!-- Right Form Panel -->
+    <div class="login-form-panel">
+      <div class="login-card">
+        <h2 style="font-size: 22px; margin-bottom: 6px; color: var(--navy-primary);">Sign In to Platform</h2>
+        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 24px;">Enter your administrative credentials to access district intelligence.</p>
+
+        <form id="login-form">
+          <div style="margin-bottom: 18px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">Official Email</label>
+            <input type="email" id="email" class="search-input" style="width: 100%; border-radius: var(--radius-md);" placeholder="admin@landguard.ai" required value="admin@landguard.ai">
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">Password</label>
+            <input type="password" id="password" class="search-input" style="width: 100%; border-radius: var(--radius-md);" placeholder="••••••••" required value="admin123">
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 12px;">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+              <input type="checkbox" checked> Remember session
+            </label>
+            <a href="#" style="color: var(--blue-primary);">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 14px;">
+            <i class="fa-solid fa-right-to-bracket"></i> Sign In to Dashboard
+          </button>
+        </form>
+
+        <!-- Quick Demo Login Presets -->
+        <div class="demo-login-box">
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 10px;">
+            <i class="fa-solid fa-bolt" style="color: var(--risk-med);"></i> Quick Demo One-Click Sign In
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <button type="button" class="btn btn-sm btn-outline" style="justify-content: flex-start;" onclick="fillAndLogin('admin@landguard.ai', 'admin123')">
+              <i class="fa-solid fa-user-shield" style="color: var(--blue-primary);"></i>
+              <span>Login as <strong>District Administrator</strong></span>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline" style="justify-content: flex-start;" onclick="fillAndLogin('officer@landguard.ai', 'officer123')">
+              <i class="fa-solid fa-user-tie" style="color: var(--teal-primary);"></i>
+              <span>Login as <strong>Land Acquisition Officer</strong></span>
+            </button>
+          </div>
+        </div>
+
+        <div id="login-error" style="color: var(--risk-high); font-size: 12px; margin-top: 14px; display: none; text-align: center;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/mock-data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      LANDGUARD_AUTH.initAuthGuard();
+
+      const form = document.getElementById('login-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        const res = LANDGUARD_AUTH.login(email, password);
+        if (res.success) {
+          window.location.href = 'dashboard.html';
+        } else {
+          const errBox = document.getElementById('login-error');
+          errBox.innerText = res.message;
+          errBox.style.display = 'block';
+        }
+      });
+    });
+
+    function fillAndLogin(email, pass) {
+      document.getElementById('email').value = email;
+      document.getElementById('password').value = pass;
+      const res = LANDGUARD_AUTH.login(email, pass);
+      if (res.success) {
+        window.location.href = 'dashboard.html';
+      }
+    }
+  </script>
+</body>
+</html>

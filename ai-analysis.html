@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Risk Analysis - LandGuard AI | Dakshina Kannada</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Dynamic Sidebar Holder -->
+    <div id="sidebar-container"></div>
+
+    <div class="main-content">
+      <!-- Dynamic Topbar Holder -->
+      <div id="topbar-container"></div>
+
+      <main class="page-body">
+        <div class="section-header" style="margin-bottom: 24px;">
+          <div class="section-title">
+            <h1 style="font-size: 24px;">AI Risk Analysis & Delay Predictor</h1>
+            <div class="subtitle">Evaluate potential land acquisition delay using project-level statutory and progress indicators</div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; margin-bottom: 24px;">
+          <!-- Left Column: Input Form -->
+          <div class="card">
+            <div class="section-header" style="margin-bottom: 16px;">
+              <div class="section-title">
+                <h3>Acquisition Project Parameters</h3>
+                <span class="subtitle">Adjust project indicators and click run to compute delay risk</span>
+              </div>
+            </div>
+
+            <form id="ai-predictor-form">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Taluk Location</label>
+                  <select id="input-taluk" class="search-input" style="width: 100%; border-radius: var(--radius-md);">
+                    <option value="Mangaluru">Mangaluru</option>
+                    <option value="Bantwal">Bantwal</option>
+                    <option value="Belthangady">Belthangady</option>
+                    <option value="Puttur">Puttur</option>
+                    <option value="Sullia">Sullia</option>
+                    <option value="Kadaba">Kadaba</option>
+                    <option value="Moodbidri">Moodbidri</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Land Area Required (Acres)</label>
+                  <input type="number" id="input-land-area" class="search-input" style="width: 100%; border-radius: var(--radius-md);" value="42.5" step="0.1" required>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Affected Families</label>
+                  <input type="number" id="input-families" class="search-input" style="width: 100%; border-radius: var(--radius-md);" value="86" required>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Pending Court Disputes</label>
+                  <input type="number" id="input-disputes" class="search-input" style="width: 100%; border-radius: var(--radius-md);" value="7" required>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 16px;">
+                <label style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">
+                  <span>Compensation Disbursal Progress (%)</span>
+                  <span id="val-comp" style="color: var(--blue-primary);">48%</span>
+                </label>
+                <input type="range" id="input-comp-pct" min="0" max="100" value="48" style="width: 100%; cursor: pointer;" oninput="document.getElementById('val-comp').innerText = this.value + '%'">
+              </div>
+
+              <div style="margin-bottom: 16px;">
+                <label style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">
+                  <span>Rehabilitation Layout Progress (%)</span>
+                  <span id="val-rehab" style="color: var(--blue-primary);">32%</span>
+                </label>
+                <input type="range" id="input-rehab-pct" min="0" max="100" value="32" style="width: 100%; cursor: pointer;" oninput="document.getElementById('val-rehab').innerText = this.value + '%'">
+              </div>
+
+              <div style="margin-bottom: 16px;">
+                <label style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">
+                  <span>Documentation & Title Clearance (%)</span>
+                  <span id="val-doc" style="color: var(--blue-primary);">68%</span>
+                </label>
+                <input type="range" id="input-doc-pct" min="0" max="100" value="68" style="width: 100%; cursor: pointer;" oninput="document.getElementById('val-doc').innerText = this.value + '%'">
+              </div>
+
+              <div style="margin-bottom: 24px;">
+                <label style="display: block; font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Stakeholder Responsiveness</label>
+                <select id="input-responsiveness" class="search-input" style="width: 100%; border-radius: var(--radius-md);">
+                  <option value="High">High Cooperation</option>
+                  <option value="Medium">Medium Cooperation</option>
+                  <option value="Low" selected>Low Cooperation / Resistance</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 14px;">
+                <i class="fa-solid fa-brain"></i> RUN AI RISK ANALYSIS
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Column: Prediction Output Card -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: center; position: relative;">
+            
+            <!-- 1. Initial Ready State -->
+            <div id="ai-empty-state" style="text-align: center; padding: 40px 24px;">
+              <div style="width: 64px; height: 64px; background: var(--blue-soft); color: var(--blue-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 20px auto;">
+                <i class="fa-solid fa-sliders"></i>
+              </div>
+              <h3 style="font-size: 18px; color: var(--navy-primary); margin-bottom: 8px;">READY FOR ANALYSIS</h3>
+              <p style="font-size: 13px; color: var(--text-secondary); max-width: 360px; margin: 0 auto 24px auto; line-height: 1.5;">
+                Enter the acquisition project parameters and run the AI risk analysis to generate a delay prediction.
+              </p>
+              <div style="font-size: 11px; color: var(--text-muted); background: var(--bg-subtle); padding: 10px 14px; border-radius: var(--radius-md); border: 1px dashed var(--border-color); display: inline-block;">
+                <i class="fa-solid fa-circle-info"></i> Prototype Risk Engine • Deterministic Multi-Factor Scoring
+              </div>
+            </div>
+
+            <!-- 2. Loading State -->
+            <div id="ai-loading-state" style="display: none; text-align: center; padding: 40px 20px;">
+              <div style="width: 48px; height: 48px; border: 4px solid var(--border-color); border-top-color: var(--blue-primary); border-radius: 50%; margin: 0 auto 20px auto; animation: spin 1s linear infinite;"></div>
+              <h3 id="loading-status-text" style="font-size: 16px; color: var(--navy-primary); margin-bottom: 6px;">Analyzing project risk...</h3>
+              <p style="font-size: 12px; color: var(--text-secondary);">Evaluating acquisition indicators & computing factor attribution</p>
+            </div>
+
+            <!-- 3. Results State -->
+            <div id="ai-results-state" style="display: none;">
+              <div style="text-align: center; padding: 16px 0; border-bottom: 1px solid var(--border-color); margin-bottom: 16px;">
+                <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.05em; margin-bottom: 4px;">
+                  PREDICTED DELAY PROBABILITY
+                </div>
+                <div id="res-delay-prob" style="font-size: 52px; font-weight: 800; color: var(--navy-primary); line-height: 1;">
+                  --%
+                </div>
+                <div style="margin-top: 8px;">
+                  <span id="res-risk-level" class="badge badge-high" style="font-size: 13px; padding: 5px 14px;">HIGH RISK</span>
+                </div>
+                <div id="res-confidence" style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">
+                  Model Confidence: 88%
+                </div>
+              </div>
+
+              <!-- Explainable Risk Factors Section -->
+              <div style="margin-bottom: 20px;">
+                <h4 style="margin-bottom: 2px;">Explainable Risk Factors (Prototype)</h4>
+                <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">
+                  Factor contributions shown are prototype estimates. Production SHAP explanations will be generated by the trained ML model.
+                </div>
+                <div id="res-xai-factors">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+
+              <!-- Generated Administrative Interventions Section -->
+              <div>
+                <h4 style="margin-bottom: 10px;">Generated Administrative Interventions</h4>
+                <div id="res-recommendations">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <div>
+          <strong>LANDGUARD AI</strong> • Predictive Land Acquisition Risk Analytics for Dakshina Kannada District
+        </div>
+        <div class="disclaimer-tag">
+          Prototype demonstration data. Not an official government dataset.
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <style>
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+
+  <!-- Scripts -->
+  <script src="js/mock-data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/ai-analysis.js"></script>
+</body>
+</html>
