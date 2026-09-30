@@ -12,19 +12,19 @@ LandGuard AI is a complete full-stack decision-support system built for district
 
 ## 🏗️ Full-Stack Technology Architecture
 
-### 1. FRONTEND (20 Marks)
+### 1. FRONTEND 
 - **HTML5 & CSS3:** Responsive light theme design system (`#0B1F3A` Deep Navy, `#1769E0` Blue, `#0EA5A8` Teal).
 - **Vanilla JavaScript (ES6+):** Dynamic navigation, state handling, toast notifications, search, and filtering.
 - **Chart.js:** Executive line trends, risk distribution doughnut charts, and taluk comparison bar graphs.
 - **Leaflet.js & OpenStreetMap:** Interactive GIS map centered on Dakshina Kannada (`[12.8702, 74.8806]`).
 
-### 2. BACKEND (20 Marks)
+### 2. BACKEND 
 - **Python 3 & Flask:** Lightweight modular REST API (`backend/app.py`).
 - **Flask-CORS:** Enabled for cross-origin browser requests from frontend.
 - **MySQL Connector:** Native MySQL database pooling and query abstraction (`backend/models/database.py`).
 - **Risk Prediction Engine:** Multi-factor deterministic risk calculator (`backend/services/risk_service.py`).
 
-### 3. DATABASE (20 Marks)
+### 3. DATABASE 
 - **MySQL (`landguard` schema):** Relational database containing 7 normalized tables.
 - **48 Seed Projects:** Complete monitored dataset across Dakshina Kannada's 7 taluks (*Mangaluru, Bantwal, Belthangady, Puttur, Sullia, Kadaba, Moodbidri*).
 
