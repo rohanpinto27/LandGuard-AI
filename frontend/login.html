@@ -163,12 +163,12 @@
       LANDGUARD_AUTH.initAuthGuard();
 
       const form = document.getElementById('login-form');
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         
-        const res = LANDGUARD_AUTH.login(email, password);
+        const res = await LANDGUARD_AUTH.loginAsync(email, password);
         if (res.success) {
           window.location.href = 'dashboard.html';
         } else {
@@ -179,10 +179,10 @@
       });
     });
 
-    function fillAndLogin(email, pass) {
+    async function fillAndLogin(email, pass) {
       document.getElementById('email').value = email;
       document.getElementById('password').value = pass;
-      const res = LANDGUARD_AUTH.login(email, pass);
+      const res = await LANDGUARD_AUTH.loginAsync(email, pass);
       if (res.success) {
         window.location.href = 'dashboard.html';
       }

@@ -1,10 +1,12 @@
 /* ==========================================================================
    LANDGUARD AI - Authentication & Session Service
-   Client-Side Authentication Guard & LocalStorage State
+   Communicates with Flask API (POST /api/auth/login) & LocalStorage Session
    ========================================================================== */
 
 const LANDGUARD_AUTH = {
-  // Demo accounts
+  API_URL: "http://127.0.0.1:5000/api/auth/login",
+
+  // Demo fallback accounts
   DEMO_USERS: {
     "admin@landguard.ai": {
       password: "admin123",
@@ -22,12 +24,11 @@ const LANDGUARD_AUTH = {
     }
   },
 
-  // Initialize Auth Guard
+  // Initialize Auth Guard on page load
   initAuthGuard: function() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const session = this.getSession();
 
-    // If on login page and already logged in, redirect to dashboard
     if (currentPage === 'login.html' || currentPage === 'index.html') {
       if (session && session.loggedIn) {
         window.location.href = 'dashboard.html';
@@ -35,13 +36,33 @@ const LANDGUARD_AUTH = {
       return;
     }
 
-    // Protect all internal pages
     if (!session || !session.loggedIn) {
       window.location.href = 'login.html';
     }
   },
 
-  // Perform Login
+  // Asynchronous Login connecting to Flask Backend (POST /api/auth/login)
+  loginAsync: async function(email, password) {
+    try {
+      const res = await fetch(this.API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, password: password })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        localStorage.setItem('landguard_session', JSON.stringify(data.user));
+        return { success: true, user: data.user };
+      }
+    } catch (e) {
+      console.warn("[Auth] Flask auth API unreachable. Falling back to local verification.", e);
+    }
+
+    // Local Fallback Verification
+    return this.login(email, password);
+  },
+
+  // Synchronous Local Fallback Login
   login: function(email, password) {
     const user = this.DEMO_USERS[email.toLowerCase().trim()];
     if (user && user.password === password) {
@@ -57,7 +78,7 @@ const LANDGUARD_AUTH = {
       localStorage.setItem('landguard_session', JSON.stringify(sessionData));
       return { success: true, user: sessionData };
     }
-    return { success: false, message: "Invalid email or password. Use demo credentials." };
+    return { success: false, message: "Invalid email or password. Use admin@landguard.ai / admin123." };
   },
 
   // Logout
